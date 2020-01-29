@@ -1,0 +1,13 @@
+{
+  "name": "modulo01",
+  "description": "Pasta do projeto do módulo 01 do bootcamp da Rocketseat",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "dev": "nodemon ./index.js"
+  }
+}
