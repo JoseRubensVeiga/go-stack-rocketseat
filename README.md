@@ -39,6 +39,10 @@ Como os dados são enviados por _baixo dos panos_. É mais difícil expor esses 
 ### Enviar muitos dados
 No tipo de envio de dados pela URL, a quantidade de informação enviada é limitada. Pois a URL requisitada é limitada a somente 255 caracteres. Já no envio de dados pelo **corpo** da requisição, não temos esse limite.
 
+### Headers
+
+São dados que normalmente não se repetem e que complementam a requisição como: Com que tipo de estrutura as informações estão sendo enviadas, qual é o tipo de estrutura que a resposta precisa ter, informações de acesso como token, locations, languages, etc.
+
 ### Http Codes
 
 Os **HTTP CODES** são números que são enviados na resposta de cada requisição. Elas têm a finalidade de explicar o resultado do back-end em relação a requisição. Existem diversos **HTTP Codes**:
