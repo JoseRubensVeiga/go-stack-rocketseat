@@ -65,3 +65,30 @@ Os middlewares funcionam exatamente como no [Laravel](https://laravel.com/). Sã
 
 ### Debug com VSCode
 No curso aprendemos como utilizar a aba de Debug do VSCode. Para mais informações [Clique aqui!](https://code.visualstudio.com/docs/editor/debugging)
+
+
+# Módulo 02 =)
+
+## Ambiente e conceitos
+
+### Configurando a estrutura
+### Nodemon & Sucrase
+### Conceitos de docker
+### Configurando o Docker
+### Sequelize & MVC
+### ESLint, Prettier & EditorConfig
+### Configurando o Sequelize
+
+## Cadastro e autenticação de usuários
+
+### Migration de usuário
+### Model de usuário
+### Criando o Loader de Models
+### Cadastro de usuários
+### Gerando hash de senha
+### Conceitos de JWT
+### Autenticação de JWT
+### Middleware de Autenticação
+### Update do usuário
+### Validando dados de entrada
+
