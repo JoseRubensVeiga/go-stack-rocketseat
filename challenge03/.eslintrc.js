@@ -21,5 +21,6 @@ module.exports = {
     "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
     "arrow-body-style": 0,
     "object-curly-spacing": 0,
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   },
 };
