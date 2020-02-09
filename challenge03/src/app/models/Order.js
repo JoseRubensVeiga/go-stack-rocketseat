@@ -15,6 +15,7 @@ class Order extends Model {
     this.belongsTo(models.Recipient, {foreignKey: 'recipient_id', as: 'recipient', key: 'id'});
     this.belongsTo(models.Deliveryman, {foreignKey: 'deliveryman_id', as: 'deliveryman', key: 'id'});
     this.belongsTo(models.File, {foreignKey: 'signature_id', as: 'signature', key: 'id'});
+    this.hasMany(models.DeliveryProblem, {foreignKey: 'order_id', key: 'id'});
   }
 }
 

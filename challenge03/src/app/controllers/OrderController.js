@@ -1,6 +1,24 @@
 import Order from '../models/Order';
 
 class OrderController {
+  async index(req, res) {
+    return res.json(await Order.findAll());
+  }
+
+  async show(req, res) {
+    const { id } = req.params;
+
+    const order = await Order.findByPk(id);
+
+    if (!order) {
+      return res.status(400).json({
+        error: 'There is no order with this id',
+      });
+    }
+
+    return res.json(order);
+  }
+
   async store(req, res) {
     const {
       recipient_id, deliveryman_id, signature_id, product,
@@ -16,6 +34,48 @@ class OrderController {
 
     return res.json({
       order,
+    });
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+
+    const { start_date } = req.body;
+
+    if (start_date) {
+      const data = new Date(start_date);
+      const hour = data.getHours();
+
+      if (!(hour >= 8 && hour <= 18)) {
+        res.status(400).json({
+          error: 'Invald start date.',
+        });
+      }
+    }
+
+    const order = await Order.findByPk(id);
+
+    order.update(req.body);
+    await order.save();
+
+    return res.json(order);
+  }
+
+  async destroy(req, res) {
+    const { id } = req.params;
+
+    const order = await Order.findByPk(id);
+
+    if (!order) {
+      return res.status(400).json({
+        error: 'There is no order with this id',
+      });
+    }
+
+    await order.destroy();
+
+    return res.json({
+      message: 'success',
     });
   }
 }
