@@ -1,7 +1,11 @@
 import * as Yup from 'yup';
+import { format } from 'date-fns';
+import { pt } from 'date-fns/locale';
 
 import DeliveryProblem from '../models/DeliveryProblem';
 import Order from '../models/Order';
+import Deliveryman from '../models/Deliveryman';
+import Mail from '../../lib/Mail';
 
 class DeliveryProblemController {
   async index(req, res) {
@@ -67,7 +71,14 @@ class DeliveryProblemController {
       return res.status(400).json({ error: 'There is no problem with this id.' });
     }
 
-    const order = await Order.findByPk(problem.order_id);
+    const order = await Order.findByPk(problem.order_id, {
+      include: [
+        {
+          model: Deliveryman,
+          as: 'deliveryman',
+        },
+      ],
+    });
 
 
     if (order.canceled_at) {
@@ -76,6 +87,17 @@ class DeliveryProblemController {
 
     order.canceled_at = new Date();
     await order.save();
+
+    await Mail.sendMail({
+      to: `${order.deliveryman.name} <${order.deliveryman.email}>`,
+      subject: 'Um pedido foi cancelado',
+      template: 'cancellation',
+      context: {
+        deliverymanName: order.deliveryman.name,
+        productName: order.product,
+        canceledAt: format(order.canceled_at, "'dia' dd 'de' MMMM', às' H:mm'h'", {locale: pt}),
+      },
+    });
 
     return res.json({ message: 'Success! Order has been canceled.' });
   }

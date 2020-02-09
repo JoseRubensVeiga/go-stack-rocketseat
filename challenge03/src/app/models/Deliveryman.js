@@ -11,7 +11,6 @@ class Deliveryman extends Model {
 
   static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar', sourceKey: 'id' });
-    this.hasMany(models.Order);
   }
 }
 

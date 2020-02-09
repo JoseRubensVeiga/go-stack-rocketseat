@@ -1,4 +1,10 @@
+import { format } from 'date-fns';
+import { pt } from 'date-fns/locale';
+
 import Order from '../models/Order';
+import Deliveryman from '../models/Deliveryman';
+
+import Mail from '../../lib/Mail';
 
 class OrderController {
   async index(req, res) {
@@ -64,7 +70,14 @@ class OrderController {
   async destroy(req, res) {
     const { id } = req.params;
 
-    const order = await Order.findByPk(id);
+    const order = await Order.findByPk(id, {
+      include: [
+        {
+          model: Deliveryman,
+          as: 'deliveryman',
+        },
+      ],
+    });
 
     if (!order) {
       return res.status(400).json({
@@ -73,6 +86,17 @@ class OrderController {
     }
 
     await order.destroy();
+
+    await Mail.sendMail({
+      to: `${order.deliveryman.name} <${order.deliveryman.email}>`,
+      subject: 'Um pedido foi cancelado',
+      template: 'cancellation',
+      context: {
+        deliverymanName: order.deliveryman.name,
+        productName: order.product,
+        canceledAt: format(order.canceled_at, "'dia' dd 'de' MMMM', às' H:mm'h'", {locale: pt}),
+      },
+    });
 
     return res.json({
       message: 'success',
