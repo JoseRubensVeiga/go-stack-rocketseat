@@ -1,0 +1,23 @@
+.reply-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.reply-container .author-img {
+    width: 30px;
+}
+
+.reply-container .reply-body {
+    background-color: rgb(231, 231, 231);
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    line-height: 1.5rem;
+    flex: 1;
+}
+
+.reply-container .reply-body .author-name {
+    font-weight: bold;
+    padding-right: 10px;
+}

@@ -1,0 +1,31 @@
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #F1F1F1;
+}
+
+.comment-container .comment-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px
+}
+
+.comment-container .comment-author .author-img {
+    width: 30px;
+}
+
+.comment-author .author-description {
+    margin-left: 10px;
+}
+
+.comment-author .author-description .author-name {
+    font-weight: bold;
+}
+
+.comment-author .author-description .data-comment {
+    font-size: .9rem;
+    color: rgb(172, 172, 172);
+    margin-top: 2px;
+}

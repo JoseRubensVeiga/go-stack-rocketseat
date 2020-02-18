@@ -67,10 +67,9 @@ Os middlewares funcionam exatamente como no [Laravel](https://laravel.com/). Sã
 No curso aprendemos como utilizar a aba de Debug do VSCode. Para mais informações [Clique aqui!](https://code.visualstudio.com/docs/editor/debugging)
 
 
-# Módulo 02 =)
+# Módulo 02 - Iniciando a API do GoBarber
 
 ## Ambiente e conceitos
-
 ### Configurando a estrutura
 ### Nodemon & Sucrase
 ### Conceitos de docker
@@ -80,7 +79,6 @@ No curso aprendemos como utilizar a aba de Debug do VSCode. Para mais informaç�
 ### Configurando o Sequelize
 
 ## Cadastro e autenticação de usuários
-
 ### Migration de usuário
 ### Model de usuário
 ### Criando o Loader de Models
@@ -92,3 +90,36 @@ No curso aprendemos como utilizar a aba de Debug do VSCode. Para mais informaç�
 ### Update do usuário
 ### Validando dados de entrada
 
+# Módulo 03 - Continuando a API do GoBarber
+
+## Envio de arquivos
+### Configurando o Multer
+### Inserindo Avatar do usuário
+
+## Funcionalidade de agendamentos
+### Listagem de prestadores de serviço
+### Migration e model de agendamento
+### Agendamento de serviço
+### Validações de agendamento
+### Listando agendamentos do usuário
+### Aplicando paginação
+### Listando agenda do prestador
+
+## Envio de notificações
+### Configurando o MongoDB
+### Notificando novos agendamentos
+### Listando notificações do usuário
+### Marcar notificações como lidar
+
+## Cancelamento e envio de e-mail
+### Cancelamento de agendamento
+### Configurando o Nodemailer
+### Configurando templates de e-mail
+### Configurando fila com Redis
+### Monitorando falhas na fila
+### Listando horários disponíveis
+### Campos virtuais no agendamento
+
+## Configurações avançadas
+### Tratamento de exceções
+### Variáveis de ambiente

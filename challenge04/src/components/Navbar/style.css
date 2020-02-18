@@ -1,0 +1,25 @@
+nav {
+    background-color: #4A90E2;
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    width: 120px;
+}
+
+.my-profile {
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.user-logo {
+    width: 30px;
+    margin-left: 10px
+}
