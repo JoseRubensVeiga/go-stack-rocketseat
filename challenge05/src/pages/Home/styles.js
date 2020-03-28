@@ -52,7 +52,7 @@ export const ProductAmount = styled.Text`
   background-color: #5a479a;
   width: 40px;
   padding: 11px 5px;
-  text-align: right;
+  text-align: center;
   color: #fff;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;

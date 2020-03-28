@@ -11,6 +11,7 @@ import GlobalStyle from './styles/global';
 import Routes from './routes';
 import Header from './components/Header';
 import store from './store';
+
 export default function src() {
   return (
     <Provider store={store}>

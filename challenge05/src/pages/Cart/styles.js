@@ -15,12 +15,6 @@ export const CartContainer = styled.View`
   padding: 20px;
 `;
 
-export const List = styled.View`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-`;
-
 export const Item = styled.View`
   margin-bottom: 20px;
 `;
@@ -108,7 +102,6 @@ export const SubTotalPrice = styled.Text`
 `;
 
 export const TotalCartContainer = styled.View`
-  display: flex;
   align-items: center;
 `;
 

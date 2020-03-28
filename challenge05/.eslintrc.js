@@ -12,6 +12,7 @@ module.exports = {
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    __DEV__: 'readonly',
   },
   parserOptions: {
     ecmaFeatures: {
@@ -26,5 +27,8 @@ module.exports = {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': 'off',
     'import/prefer-default-export': 'off',
+    'react/state-in-constructor': 'off',
+    'no-console': ['error', {allow: ['tron']}],
+    'no-param-reassign': 'off',
   },
 };
