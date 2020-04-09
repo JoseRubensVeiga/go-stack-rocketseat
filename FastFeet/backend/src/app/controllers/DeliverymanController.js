@@ -1,8 +1,21 @@
+import { iLike } from 'sequelize/lib/operators';
+
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
 
 class DeliverymanController {
   async index(req, res) {
+    const { q } = req.query;
+    let where = null;
+
+    if (q) {
+      where = {
+        name: {
+          [iLike]: `%${q}%`,
+        },
+      };
+    }
+
     const deliverymans = await Deliveryman.findAll({
       include: [
         {
@@ -10,6 +23,7 @@ class DeliverymanController {
           as: 'avatar',
         },
       ],
+      where,
     });
 
     return res.json(deliverymans);

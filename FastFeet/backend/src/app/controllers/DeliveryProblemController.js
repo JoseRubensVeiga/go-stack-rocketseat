@@ -30,7 +30,9 @@ class DeliveryProblemController {
     });
 
     if (!problems.length > 0) {
-      return res.status(400).json({ error: 'There is no problems with this order.' });
+      return res
+        .status(400)
+        .json({ error: 'There is no problems with this order.' });
     }
 
     return res.json(problems);
@@ -68,7 +70,9 @@ class DeliveryProblemController {
     const problem = await DeliveryProblem.findByPk(id);
 
     if (!problem) {
-      return res.status(400).json({ error: 'There is no problem with this id.' });
+      return res
+        .status(400)
+        .json({ error: 'There is no problem with this id.' });
     }
 
     const order = await Order.findByPk(problem.order_id, {
@@ -79,7 +83,6 @@ class DeliveryProblemController {
         },
       ],
     });
-
 
     if (order.canceled_at) {
       return res.status(400).json({ error: 'Order was already canceled.' });
@@ -95,7 +98,11 @@ class DeliveryProblemController {
       context: {
         deliverymanName: order.deliveryman.name,
         productName: order.product,
-        canceledAt: format(order.canceled_at, "'dia' dd 'de' MMMM', às' H:mm'h'", {locale: pt}),
+        canceledAt: format(
+          order.canceled_at,
+          "'dia' dd 'de' MMMM', às' H:mm'h'",
+          { locale: pt }
+        ),
       },
     });
 

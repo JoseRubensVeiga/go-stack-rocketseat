@@ -22,7 +22,7 @@ class WithdrawOrderController {
     }
 
     if (order.end_date) {
-      return res.status(401).json({ error: 'Order already is already delivered.'});
+      return res.status(401).json({ error: 'Order already is delivered.' });
     }
 
     order.end_date = end_date;

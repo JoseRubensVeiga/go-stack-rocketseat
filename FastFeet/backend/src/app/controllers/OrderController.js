@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { pt } from 'date-fns/locale';
+import { iLike } from 'sequelize/lib/operators';
 
 import Order from '../models/Order';
 import Deliveryman from '../models/Deliveryman';
@@ -8,7 +9,22 @@ import Mail from '../../lib/Mail';
 
 class OrderController {
   async index(req, res) {
-    return res.json(await Order.findAll());
+    const { q } = req.query;
+    let where = null;
+
+    if (q) {
+      where = {
+        product: {
+          [iLike]: `%${q}%`,
+        },
+      };
+    }
+
+    const orders = await Order.findAll({
+      where,
+    });
+
+    return res.json(orders);
   }
 
   async show(req, res) {
@@ -26,9 +42,7 @@ class OrderController {
   }
 
   async store(req, res) {
-    const {
-      recipient_id, deliveryman_id, signature_id, product,
-    } = req.body;
+    const { recipient_id, deliveryman_id, signature_id, product } = req.body;
 
     const order = await Order.create({
       product,
@@ -36,7 +50,6 @@ class OrderController {
       deliveryman_id,
       signature_id,
     });
-
 
     return res.json({
       order,
@@ -85,18 +98,22 @@ class OrderController {
       });
     }
 
-    await order.destroy();
-
-    await Mail.sendMail({
+    Mail.sendMail({
       to: `${order.deliveryman.name} <${order.deliveryman.email}>`,
       subject: 'Um pedido foi cancelado',
       template: 'cancellation',
       context: {
         deliverymanName: order.deliveryman.name,
         productName: order.product,
-        canceledAt: format(order.canceled_at, "'dia' dd 'de' MMMM', às' H:mm'h'", {locale: pt}),
+        canceledAt: format(
+          order.canceled_at,
+          "'dia' dd 'de' MMMM', às' H:mm'h'",
+          { locale: pt }
+        ),
       },
     });
+
+    await order.destroy();
 
     return res.json({
       message: 'success',

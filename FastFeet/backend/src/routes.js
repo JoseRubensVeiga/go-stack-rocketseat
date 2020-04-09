@@ -24,15 +24,10 @@ router.post('/auth', AuthController.store);
 // orders for deliverymans
 router.get('/deliveryman/:id/orders/', DeliveriesController.index);
 
-// change order status
-router.put('/orders/:id/delivery/', DeliveryOrderController.update);
-
 // delivery problems
 router.get('/problems', DeliveryProblemController.index);
 router.get('/order/:id/problems', DeliveryProblemController.show);
 router.post('/order/:id/problems', DeliveryProblemController.store);
-// orders for deliverymans
-router.get('/deliveryman/:id/orders/', DeliveriesController.index);
 
 // change order status
 router.put('/orders/:id/withdraw/', WithdrawOrderController.update);
@@ -63,10 +58,10 @@ router.put('/recipients/:id', RecipientController.update);
 router.delete('/recipients/:id', RecipientController.destroy);
 
 // Deliverymans
-router.get('/deliveryman', DeliverymanController.index);
-router.get('/deliveryman/:id', DeliverymanController.show);
-router.post('/deliveryman', DeliverymanController.store);
-router.put('/deliveryman/:id', DeliverymanController.update);
+router.get('/deliverymans', DeliverymanController.index);
+router.get('/deliverymans/:id', DeliverymanController.show);
+router.post('/deliverymans', DeliverymanController.store);
+router.put('/deliverymans/:id', DeliverymanController.update);
 
 // files
 router.post('/files', upload.single('file'), FileController.store);

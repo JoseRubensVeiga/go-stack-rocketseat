@@ -24,17 +24,19 @@ class DeliveryOrderController {
     });
 
     if (ordersAmount >= 5) {
-      return res.status(401).json({ error: 'This deliveryman has already withdrawn five orders.' });
+      return res
+        .status(401)
+        .json({ error: 'This deliveryman has already withdrawn five orders.' });
     }
 
     if (order.start_date) {
-      return res.status(401).json({ error: 'Order already is already withdrawn.'});
+      return res.status(401).json({ error: 'Order already is withdrawn.' });
     }
 
     order.start_date = new Date();
     await order.save();
 
-    return res.json({ message: 'Order has been withdrawn.' });
+    return res.json({ message: 'Order has been withdrawned.' });
   }
 }
 

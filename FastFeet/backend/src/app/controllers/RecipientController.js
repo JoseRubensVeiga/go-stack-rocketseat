@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { iLike } from 'sequelize/lib/operators';
 
 import Recipient from '../models/Recipient';
 
@@ -18,7 +19,21 @@ class RecipientController {
   }
 
   async index(req, res) {
-    return res.json(await Recipient.findAll());
+    const { q } = req.query;
+    let where = null;
+
+    if (q) {
+      where = {
+        name: {
+          [iLike]: `%${q}%`,
+        },
+      };
+    }
+
+    const recipients = await Recipient.findAll({
+      where,
+    });
+    return res.json(recipients);
   }
 
   async store(req, res) {

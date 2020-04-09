@@ -21,5 +21,6 @@ module.exports = {
     'object-curly-spacing': 0,
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'comma-dangle': 'off',
+    'object-curly-newline': 'off',
   },
 };
