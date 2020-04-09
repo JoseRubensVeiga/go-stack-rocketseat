@@ -19,7 +19,11 @@ export default function SignIn() {
     <Container>
       <img src={logo} alt="logo" />
 
-      <Form onSubmit={handleOnSubmit} className="styled-form">
+      <Form
+        onSubmit={handleOnSubmit}
+        initialData={{ email: 'admin@fastfeet.com', password: '123456' }}
+        className="styled-form"
+      >
         <div className="styled-form-group">
           <label htmlFor="email">SEU E-MAIL</label>
           <Input

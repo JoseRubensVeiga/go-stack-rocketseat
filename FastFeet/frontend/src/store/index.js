@@ -1,5 +1,6 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import { compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { reduxPersist } from './configureStore';
 
 import reducers from './modules/RootReducer';
 import sagas from './modules/RootSaga';
@@ -20,8 +21,7 @@ const composer =
     ? compose(applyMiddleware(...middlewares), console.tron.createEnhancer())
     : compose(applyMiddleware(...middlewares));
 
-const store = createStore(reducers, composer);
-
+const { persistor, store } = reduxPersist(composer, reducers);
 sagaMiddleware.run(sagas);
 
-export default store;
+export { persistor, store };

@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
-export const PopupOptions = styled.div`
+export const Container = styled.div`
   position: absolute;
   background-color: #fff;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
 
-  width: 150px;
+  width: 200px;
 
-  margin-left: -60px;
+  margin-left: calc(-100px + 15px);
   box-shadow: 0 0 5px lightgray;
 
   &:before {
     content: '';
-    margin-left: calc(65px - 10px);
+    margin-left: calc(80px);
     margin-top: calc(-10px + -10px / 2);
 
     height: 10px;
@@ -28,27 +28,35 @@ export const PopupOptions = styled.div`
 
   &:after {
     content: '';
-    margin-left: calc(65px - 20px);
+    margin-left: calc(70px);
     top: 0;
 
     height: 10px;
     width: 30px;
-    background-color: white;
+    background-color: #fff;
 
     position: absolute;
   }
 
   ul {
-    padding-top: 5px;
-
     li {
       padding: 10px 5px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
       transition: 0.3s;
       background-color: #fff;
-      color: #999;
+
+      button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: none;
+        background: none;
+        color: #999;
+        font-size: 16px;
+
+        div {
+          flex: 1;
+        }
+      }
 
       &:not(:last-child) {
         border-bottom: 1px solid #eeeeee;

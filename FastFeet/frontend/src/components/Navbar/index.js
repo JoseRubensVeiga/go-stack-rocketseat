@@ -1,18 +1,22 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import logo from '~/assets/images/fastfeet-logo.png';
 import { Container, ItemList, Item, ProfileContainer, Logout } from './styles';
 
+import { signOut } from '~/store/modules/auth/actions';
+
 export default function Navbar() {
+  const dispatch = useDispatch();
   const items = [
-    { label: 'Encomendas', isActive: true, url: '/deliveries' },
-    { label: 'Entregadores', isActive: false, url: '/deliverymans' },
-    { label: 'Destinatários', isActive: false, url: '/recipients' },
-    { label: 'Problemas', isActive: false, url: '/problems' },
+    { label: 'Encomendas', url: '/deliveries' },
+    { label: 'Entregadores', url: '/deliverymans' },
+    { label: 'Destinatários', url: '/recipients' },
+    { label: 'Problemas', url: '/problems' },
   ];
 
   function logoutUser() {
-    alert('logout');
+    dispatch(signOut());
   }
 
   return (
